@@ -1,5 +1,6 @@
 package kodlamaio.northwind.business.concretes;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 import java.util.List;
 
@@ -87,7 +88,7 @@ public class ProductManager implements ProductService {
 	}
 
 	@Override
-	public List<Product> getByNameAndCategory(String productName, int categoryId) {
+	public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -105,6 +106,18 @@ public class ProductManager implements ProductService {
 		Sort sort = Sort.by(Sort.Direction.ASC,"productName");
 		return new SuccessDataResult<List<Product>>
 		(this.productDao.findAll(sort));
+	}
+
+	@Override
+	public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(), "Data listelendi");
+
 	}
 
 
